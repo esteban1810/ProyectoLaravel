@@ -2,6 +2,14 @@
 @section('content')
 <div class="container card">        
     <div class="card-body">
+        @if(count($errors)>0)
+            <ul class="list-group">
+            @foreach($errors->all() as $error)
+                <li class="list-group-item list-group-item-danger">{{$error}}</li>
+            @endforeach
+            </ul>
+            <br>
+        @endif
         <h1>FORM PRODUCTO</h1>
         @if($producto->precio) 
             <form action="{{url('/producto/'.$producto->id)}}" method="post" enctype="multipart/form-data">

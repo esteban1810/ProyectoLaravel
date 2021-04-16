@@ -36,6 +36,9 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $datos = request()->except('_token');
+        if($request->hasFile('imagen')){
+            $datos['imagen']=$request->file('imagen')->store('uploads','public');
+        }
         Producto::insert($datos);
         return response()->json($datos);
     }

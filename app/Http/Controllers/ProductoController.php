@@ -26,8 +26,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        $producto = new Producto();
-        return view('producto/form',compact('producto'));
+        return view('producto/form');
     }
 
     /**

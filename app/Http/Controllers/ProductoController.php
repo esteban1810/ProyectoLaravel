@@ -79,7 +79,13 @@ class ProductoController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
-        //
+
+        Producto::where('id',$producto->id)->update([
+            'nombre'=>$request->nombre,
+            'descripcion'=>$request->descripcion,
+            'precio'=>$request->precio
+        ]);
+        return redirect('/producto/'.$producto->id);
     }
 
     /**

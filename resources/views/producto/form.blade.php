@@ -10,12 +10,18 @@
     
 
     <h1>FORM PRODUCTO</h1>
-    <form action="{{url('/producto')}}" method="post" enctype="multipart/form-data">
+    @if(isset($producto->precio)) 
+        <form action="{{url('/producto/'.$producto->id)}}" method="post" enctype="multipart/form-data">
+        {{method_field('PATCH')}}
+    @else
+        <form action="{{url('/producto')}}" method="post" enctype="multipart/form-data">
+    @endif
         @csrf
+
         {{$producto->imagen}}
         <div class="campo">
             <label for="imagen">Imagen: </label>
-            <input type="file" name="imagen" id="imagen" value="{{$producto->imagen}}"><br>
+            <input type="file" name="imagen" id="imagen" value="{{$producto->imagen}}"></input><br>
         </div>
         <div class="campo">
             <label for="nombre">Nombre: </label>

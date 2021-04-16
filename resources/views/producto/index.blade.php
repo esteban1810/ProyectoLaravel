@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>INDEX PRODUCTO</h1>
-    <table>
+    <table border="1">
         <tr>
             <th>Imagen</th>
             <th>Nombre</th>

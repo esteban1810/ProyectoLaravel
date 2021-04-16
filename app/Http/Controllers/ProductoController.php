@@ -35,7 +35,9 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datos = request()->all();
+
+        return response()->json($datos);
     }
 
     /**

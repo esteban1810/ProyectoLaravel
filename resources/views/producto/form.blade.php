@@ -8,7 +8,8 @@
 </head>
 <body>
     <h1>FORM PRODUCTO</h1>
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="{{url('/producto')}}" method="post" enctype="multipart/form-data">
+        @csrf
         <div class="campo">
             <label for="imagen">Imagen: </label>
             <input type="file" name="imagen" id="imagen"><br>

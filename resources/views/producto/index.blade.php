@@ -1,45 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index Producto</title>
-</head>
-<body>
-    @if(Session::has('mensaje'))
-        {{Session::get('mensaje')}}
-    @endif
-    <h1>INDEX PRODUCTO</h1>
-    <table border="1">
-        <tr>
-            <th>Imagen</th>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Acciones</th>
-        </tr>
-        <tbody>
-            @foreach($productos as $producto)
-            <tr>
-                <td>
-                @if($producto->imagen)
-                    <img src="{{asset('storage').'/'.$producto->imagen}}" height="250">
-                @endif
-                </td>
-                <td>{{$producto->nombre}}</td>
-                <td>{{$producto->precio}}</td>
-                <td>
-                    <a href="{{url('producto/'.$producto->id)}}">Mostrar</a>
-                    <form action="{{url('producto/'.$producto->id)}}" method="post">
-                        @csrf
-                        {{method_field('DELETE')}}
-                        <input type="submit" value="Eliminar">
-                    </form>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    <a href="{{url('producto/create')}}">Agregar</a>
-</body>
-</html>
+@extends('layouts.app')
+@section('content')
+    <div class="container card">        
+        <div class="card-body">
+            @if(Session::has('mensaje'))
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">{{Session::get('mensaje')}}</li>
+            </ul>
+            @endif
+            <h1 class="card-title">INDEX PRODUCTO</h1>
+
+            <table  class="table">
+                <tr>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+                <tbody>
+                    @foreach($productos as $producto)
+                    <tr>
+                        <td>
+                            @if($producto->imagen)
+                            <img src="{{asset('storage').'/'.$producto->imagen}}" height="150">
+                            @endif
+                        </td>
+                        <td>{{$producto->nombre}}</td>
+                        <td>{{$producto->precio}}</td>
+                        <td>
+                            <a href="{{url('producto/'.$producto->id)}}" class="btn btn-info">Mostrar</a>
+                            <br>
+                            <br>
+                            <form action="{{url('producto/'.$producto->id)}}" method="post">
+                            @csrf
+                            {{method_field('DELETE')}}
+                            <input type="submit" class="btn btn-danger" value="Eliminar">
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        <a href="{{url('producto/create')}}" class="btn btn-primary">Agregar</a>
+    </div>
+</div>
+@endsection

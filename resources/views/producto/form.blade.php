@@ -1,44 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FORM PRODUCTO</title>
-</head>
-<body>
+@extends('layouts.app')
+@section('content')
+<div class="container card">        
+    <div class="card-body">
+        <h1>FORM PRODUCTO</h1>
+        @if($producto->precio) 
+            <form action="{{url('/producto/'.$producto->id)}}" method="post" enctype="multipart/form-data">
+            {{method_field('PATCH')}}
+        @else
+            <form action="{{url('/producto')}}" method="post" enctype="multipart/form-data">
+        @endif
+            @csrf
     
-
-    <h1>FORM PRODUCTO</h1>
-    @if($producto->precio) 
-        <form action="{{url('/producto/'.$producto->id)}}" method="post" enctype="multipart/form-data">
-        {{method_field('PATCH')}}
-    @else
-        <form action="{{url('/producto')}}" method="post" enctype="multipart/form-data">
-    @endif
-        @csrf
-
-    @if($producto->imagen)
-        <img src="{{asset('storage').'/'.$producto->imagen}}" height="250">
-    @endif
-        <div class="campo">
-            <label for="imagen">Imagen: </label>
-            <input type="file" name="imagen" id="imagen" value="{{$producto->imagen}}"></input><br>
-        </div>
-        <div class="campo">
-            <label for="nombre">Nombre: </label>
-            <input type="text" name="nombre" id="nombre" value="{{$producto->nombre}}"><br>
-        </div>
-        <div class="campo">
-            <label for="descripcion">Descripción: </label><br>
-            <textarea name="descripcion" id="descripcion" cols="30" rows="10">{{$producto->descripcion}}</textarea>
-        </div>
-        <div class="campo">
-            <label for="precio">Precio: </label>
-            <input type="number" name="precio" id="precio" value="{{$producto->precio}}"><br>
-        </div>
-        <input type="submit" value="Enviar">
-    </form>
-    <a href="{{url('producto')}}">Index</a>
-</body>
-</html>
+        @if($producto->imagen)
+            <img src="{{asset('storage').'/'.$producto->imagen}}" height="250">
+        @endif
+            <div <div class="mb-3">
+                <label for="imagen" class="form-label">Imagen: </label>
+                <input type="file" class="form-control" name="imagen" id="imagen" value="{{$producto->imagen}}"></input><br>
+            </div>
+            <div <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre: </label>
+                <input type="text" class="form-control" name="nombre" id="nombre" value="{{$producto->nombre}}"><br>
+            </div>
+            <div <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción: </label><br>
+                <textarea name="descripcion" class="form-control" id="descripcion" cols="30" rows="10">{{$producto->descripcion}}</textarea>
+            </div>
+            <div <div class="mb-3">
+                <label for="precio" class="form-label">Precio: </label>
+                <input type="number" class="form-control" name="precio" id="precio" value="{{$producto->precio}}"><br>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Aceptar">
+        </form>
+        <br>
+        <a href="{{url('producto')}}" class="btn btn-secondary">Index</a>
+    </div>
+</div>
+@endsection

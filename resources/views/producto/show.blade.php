@@ -1,29 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index Producto</title>
-</head>
-<body>
-    <h1>{{$producto->nombre}}</h1>
-    <div>
-    @if($producto->imagen)
-        <img src="{{asset('storage').'/'.$producto->imagen}}" height="250">
-    @endif
-        <p>{{$producto->descripcion}}</p>
-        <p>{{$producto->precio}}</p>
+@extends('layouts.app')
+@section('content')
+<div class="container card">        
+    <div class="card-body">
+        <h1>{{$producto->nombre}}</h1>
+        <div>
+        @if($producto->imagen)
+            <img src="{{asset('storage').'/'.$producto->imagen}}" height="150">
+        @endif
+            <br>
+            <br>
+            <p>Descripcion: {{$producto->descripcion}}</p>
+            <p>Precio: ${{$producto->precio}}</p>
+        </div>
+        <div>
+            <form action="{{url('producto/'.$producto->id)}}" method="post">
+                @csrf
+                {{method_field('DELETE')}}
+                <input type="submit" class="btn btn-danger" value="Eliminar">
+            </form>
+        </div>
+        <br>
+        <a href="{{url('producto/'.$producto->id.'/edit')}}" class="btn btn-warning">Editar</a>
+        <a href="{{url('producto/create')}}" class="btn btn-primary">Agregar</a>
+        <a href="{{url('producto')}}" class="btn btn-secondary">Index</a>
     </div>
-    <div>
-        <a href="{{url('producto/'.$producto->id.'/edit')}}">Editar</a>
-        <form action="{{url('producto/'.$producto->id)}}" method="post">
-            @csrf
-            {{method_field('DELETE')}}
-            <input type="submit" value="Eliminar">
-        </form>
-    </div>
-    <a href="{{url('producto/create')}}">Agregar</a>
-    <a href="{{url('producto')}}">Index</a>
-</body>
-</html>
+</div>
+@endsection

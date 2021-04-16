@@ -9,7 +9,7 @@
 <body>
     <h1>{{$producto->nombre}}</h1>
     <div>
-        <p>{{$producto->imagen}}</p>
+        <img src="{{asset('storage').'/'.$producto->imagen}}" height="250">
         <p>{{$producto->descripcion}}</p>
         <p>{{$producto->precio}}</p>
     </div>

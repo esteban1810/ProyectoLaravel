@@ -8,5 +8,29 @@
 </head>
 <body>
     <h1>INDEX PRODUCTO</h1>
+    <table>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+        <tbody>
+            @foreach($productos as $producto)
+            <tr>
+                <td>{{$producto->imagen}}</td>
+                <td>{{$producto->nombre}}</td>
+                <td>{{$producto->precio}}</td>
+                <td>
+                    <form action="{{url('producto/'.$producto->id)}}" method="post">
+                        @csrf
+                        {{method_field('DELETE')}}
+                        <input type="submit" value="Eliminar">
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </body>
 </html>

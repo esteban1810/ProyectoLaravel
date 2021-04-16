@@ -14,7 +14,8 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        return view('producto/index');
+        $datos['productos'] = Producto::paginate(10);
+        return view('producto/index',$datos);
     }
 
     /**
@@ -40,7 +41,8 @@ class ProductoController extends Controller
             $datos['imagen']=$request->file('imagen')->store('uploads','public');
         }
         Producto::insert($datos);
-        return response()->json($datos);
+
+        return redirect('producto');
     }
 
     /**
@@ -83,8 +85,9 @@ class ProductoController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Producto $producto)
+    public function destroy($id)
     {
-        //
+        Producto::destroy($id);
+        return redirect('producto');
     }
 }

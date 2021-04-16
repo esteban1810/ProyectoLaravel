@@ -25,7 +25,8 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('producto/form');
+        $producto = new Producto();
+        return view('producto/form',compact('producto'));
     }
 
     /**
@@ -53,7 +54,6 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        // return $producto;
         $dato['producto']=Producto::find($id);
         return view('producto/show',$dato);
     }
@@ -64,9 +64,10 @@ class ProductoController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Producto $producto)
+    public function edit($id)
     {
-        //
+        $producto = Producto::findOrFail($id);
+        return view('producto/form',compact('producto'));
     }
 
     /**

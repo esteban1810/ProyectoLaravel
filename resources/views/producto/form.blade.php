@@ -7,24 +7,27 @@
     <title>FORM PRODUCTO</title>
 </head>
 <body>
+    
+
     <h1>FORM PRODUCTO</h1>
     <form action="{{url('/producto')}}" method="post" enctype="multipart/form-data">
         @csrf
+        {{$producto->imagen}}
         <div class="campo">
             <label for="imagen">Imagen: </label>
-            <input type="file" name="imagen" id="imagen"><br>
+            <input type="file" name="imagen" id="imagen" value="{{$producto->imagen}}"><br>
         </div>
         <div class="campo">
             <label for="nombre">Nombre: </label>
-            <input type="text" name="nombre" id="nombre"><br>
+            <input type="text" name="nombre" id="nombre" value="{{$producto->nombre}}"><br>
         </div>
         <div class="campo">
             <label for="descripcion">Descripción: </label><br>
-            <textarea name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
+            <textarea name="descripcion" id="descripcion" cols="30" rows="10">{{$producto->descripcion}}</textarea>
         </div>
         <div class="campo">
             <label for="precio">Precio: </label>
-            <input type="number" name="precio" id="precio"><br>
+            <input type="number" name="precio" id="precio" value="{{$producto->precio}}"><br>
         </div>
         <input type="submit" value="Enviar">
     </form>

@@ -55,7 +55,7 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        $dato['producto']=Producto::find($id);
+        $dato['producto']=Producto::findOrFail($id);
         return view('producto/show',$dato);
     }
 

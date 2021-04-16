@@ -21,5 +21,7 @@
             <input type="submit" value="Eliminar">
         </form>
     </div>
+    <a href="{{url('producto/create')}}">Agregar</a>
+    <a href="{{url('producto')}}">Index</a>
 </body>
 </html>

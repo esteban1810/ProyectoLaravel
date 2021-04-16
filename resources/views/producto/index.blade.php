@@ -35,5 +35,6 @@
             @endforeach
         </tbody>
     </table>
+    <a href="{{url('producto/create')}}">Agregar</a>
 </body>
 </html>

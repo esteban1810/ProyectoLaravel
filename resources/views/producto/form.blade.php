@@ -18,7 +18,9 @@
     @endif
         @csrf
 
+    @if(isset($producto->precio))
         <img src="{{asset('storage').'/'.$producto->imagen}}" height="250">
+    @endif
         <div class="campo">
             <label for="imagen">Imagen: </label>
             <input type="file" name="imagen" id="imagen" value="{{$producto->imagen}}"></input><br>
@@ -37,5 +39,6 @@
         </div>
         <input type="submit" value="Enviar">
     </form>
+    <a href="{{url('producto')}}">Index</a>
 </body>
 </html>

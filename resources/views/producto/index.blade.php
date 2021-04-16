@@ -7,6 +7,9 @@
     <title>Index Producto</title>
 </head>
 <body>
+    @if(Session::has('mensaje'))
+        {{Session::get('mensaje')}}
+    @endif
     <h1>INDEX PRODUCTO</h1>
     <table border="1">
         <tr>

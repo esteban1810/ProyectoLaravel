@@ -47,7 +47,7 @@ class ProductoController extends Controller
 
         Producto::insert($datos);
 
-        return redirect('producto');
+        return redirect('producto')->with('mensaje','Producto Creado');
     }
 
     /**
@@ -110,6 +110,6 @@ class ProductoController extends Controller
         
         Storage::delete('public/'.$producto->imagen);
         Producto::destroy($producto->id);
-        return redirect('producto');
+        return redirect('producto')->with('mensaje','Producto Eliminado');
     }
 }

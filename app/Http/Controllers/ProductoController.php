@@ -51,9 +51,11 @@ class ProductoController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function show(Producto $producto)
+    public function show($id)
     {
-        //
+        // return $producto;
+        $dato['producto']=Producto::find($id);
+        return view('producto/show',$dato);
     }
 
     /**

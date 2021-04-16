@@ -22,6 +22,7 @@
                 <td>{{$producto->nombre}}</td>
                 <td>{{$producto->precio}}</td>
                 <td>
+                    <a href="{{url('producto/'.$producto->id)}}">Mostrar</a>
                     <form action="{{url('producto/'.$producto->id)}}" method="post">
                         @csrf
                         {{method_field('DELETE')}}

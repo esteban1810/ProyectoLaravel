@@ -7,12 +7,10 @@
         @if($producto->imagen)
             <img src="{{asset('storage').'/'.$producto->imagen}}" height="150">
         @endif
-            <br>
-            <br>
             <p>Descripcion: {{$producto->descripcion}}</p>
             <p>Precio: ${{$producto->precio}}</p>
         </div>
-        <div>
+        <div class="d-inline">
             <form action="{{url('producto/'.$producto->id)}}" method="post">
                 @csrf
                 {{method_field('DELETE')}}

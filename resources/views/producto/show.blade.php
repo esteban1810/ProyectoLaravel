@@ -9,7 +9,9 @@
 <body>
     <h1>{{$producto->nombre}}</h1>
     <div>
+    @if($producto->imagen)
         <img src="{{asset('storage').'/'.$producto->imagen}}" height="250">
+    @endif
         <p>{{$producto->descripcion}}</p>
         <p>{{$producto->precio}}</p>
     </div>

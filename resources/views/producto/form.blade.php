@@ -10,7 +10,7 @@
     
 
     <h1>FORM PRODUCTO</h1>
-    @if(isset($producto->precio)) 
+    @if($producto->precio) 
         <form action="{{url('/producto/'.$producto->id)}}" method="post" enctype="multipart/form-data">
         {{method_field('PATCH')}}
     @else
@@ -18,7 +18,7 @@
     @endif
         @csrf
 
-    @if(isset($producto->precio))
+    @if($producto->imagen)
         <img src="{{asset('storage').'/'.$producto->imagen}}" height="250">
     @endif
         <div class="campo">

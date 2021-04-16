@@ -41,7 +41,10 @@ class ProductoController extends Controller
         $datos = request()->except('_token');
         if($request->hasFile('imagen')){
             $datos['imagen']=$request->file('imagen')->store('uploads','public');
+        } else {
+            $datos['imagen']="";
         }
+
         Producto::insert($datos);
 
         return redirect('producto');
@@ -102,9 +105,11 @@ class ProductoController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Producto $producto)
     {
-        Producto::destroy($id);
+        
+        Storage::delete('public/'.$producto->imagen);
+        Producto::destroy($producto->id);
         return redirect('producto');
     }
 }

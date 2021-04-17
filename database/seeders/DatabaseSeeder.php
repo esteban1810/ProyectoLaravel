@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'esteban@esteban.com',
             'password' => Hash::make('esteban123'),
         ]);
+
+        User::factory(10)->create();
         
         $this->productos();
     }

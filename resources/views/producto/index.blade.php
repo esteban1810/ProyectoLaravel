@@ -29,7 +29,7 @@
                             @endif
                         </td>
                         <td>{{$producto->nombre}}</td>
-                        <td>${{$producto->precio}}</td>
+                        <td>${{number_format($producto->precio,2)}}</td>
                         <td>
                             <a href="{{url('producto/'.$producto->id)}}" class="btn btn-info">Mostrar</a>
                             <!-- <br>

@@ -19,7 +19,7 @@ use App\Http\Controllers\UserController;
 //     return view('auth.login');
 // });
 Route::resource('producto',ProductoController::class)->middleware('auth');
-Route::resource('user', UserController::class);
+Route::resource('user', UserController::class)->middleware('auth');
 // Route::get('user',[UserController::class,'index']);
 // Route::get('user/create',[UserController::class,'create']);
 // Route::get('user/{id}',[UserController::class,'show']);

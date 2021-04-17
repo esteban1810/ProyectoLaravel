@@ -46,5 +46,6 @@
             </table>
         </div>
     </div>
+    {!!$productos->links()!!}
 </div>
 @endsection

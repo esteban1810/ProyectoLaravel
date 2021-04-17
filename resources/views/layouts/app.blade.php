@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,6 +28,9 @@
                 </a>
                 <div class="nav-item">
                     <a href="{{url('producto')}}" class="nav-link">Productos</a>
+                </div>
+                <div class="nav-item">
+                    <a href="{{url('user')}}" class="nav-link">Usuarios</a>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

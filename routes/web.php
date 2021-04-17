@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,15 @@ use App\Http\Controllers\ProductoController;
 //     return view('auth.login');
 // });
 Route::resource('producto',ProductoController::class)->middleware('auth');
+Route::resource('user', UserController::class);
+// Route::get('user',[UserController::class,'index']);
+// Route::get('user/create',[UserController::class,'create']);
+// Route::get('user/{id}',[UserController::class,'show']);
+// Route::get('user/{id}/edit',[UserController::class,'edit']);
+// Route::patch('user/{id}',[UserController::class,'update']);
+// Route::delete('user/{id}',[UserController::class,'destroy']);
+// Route::post('user',[UserController::class,'store'])->name('user');
+
 Auth::routes(['reset'=>false]);
 
 /* 

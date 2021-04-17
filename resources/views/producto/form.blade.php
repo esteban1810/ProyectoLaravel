@@ -40,8 +40,6 @@
             </div>
             <input type="submit" class="btn btn-primary" value="Aceptar">
         </form>
-        <br>
-        <a href="{{url('producto')}}" class="btn btn-secondary">Index</a>
     </div>
 </div>
 @endsection

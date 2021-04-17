@@ -41,12 +41,13 @@ class ProductoController extends Controller
             'nombre'=>'required|string|min:3|max:100',
             'descripcion'=>'required|string',
             'imagen'=>'required|mimes:jpeg,png,jpg',
-            'precio'=>'required|double'
+            'precio'=>'required|numeric'
         ];
 
         $mensaje = [
             'required'=>'El :attribute es requerido',
-            'imagen.required'=>'La imagen es requerida'
+            'imagen.required'=>'La imagen es requerida',
+            'mimes:jpeg,png,jpg' => 'El archivo debe tener formato: jpeg,png,jpg'
         ];
 
         $this->validate($request,$campos,$mensaje);
@@ -96,6 +97,20 @@ class ProductoController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
+        $campos = [
+            'nombre'=>'required|string|min:3|max:100',
+            'descripcion'=>'required|string',
+            'imagen'=>'mimes:jpeg,png,jpg',
+            'precio'=>'required|numeric'
+        ];
+
+        $mensaje = [
+            'required'=>'El :attribute es requerido',
+            'mimes:jpeg,png,jpg' => 'El archivo debe tener formato: jpeg,png,jpg'
+        ];
+
+        $this->validate($request,$campos,$mensaje);
+
         if($request->hasFile('imagen')){
             Storage::delete('public/'.$producto->imagen);
             $request->imagen=$request->file('imagen')->store('uploads','public');
